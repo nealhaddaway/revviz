@@ -4,10 +4,58 @@
 \alias{dataframe2html}
 \title{Convert dataframe to a table within an HTML page}
 \usage{
-dataframe2html(data)
+dataframe2html(
+  data,
+  titlefont_family = "sans-serif",
+  titlefont_size = 20,
+  titlefont_weight = "400",
+  emphasisfont_colour = "#938D69",
+  tablefont_family = "sans-serif",
+  tablefont_size = 14,
+  theadbg_colour = "#c6c09c",
+  theadtext_colour = "#fff",
+  text_align = "left",
+  hoverbg_colour = "#f4f3ed",
+  other_CSS = "",
+  search_bar = "hidden"
+)
 }
 \arguments{
 \item{data}{A dataframe containing columns and rows of data.}
+
+\item{titlefont_family}{Font family for the title text. Default is 'sans-serif'.}
+
+\item{titlefont_size}{Font size for the title text. Default is 20.}
+
+\item{titlefont_weight}{Font weight for the title text. Default is 400.}
+
+\item{emphasisfont_colour}{Colour code for the row count and search terms. Default
+is '#938D69'.}
+
+\item{tablefont_family}{Font family for the table text. Default is 'sans-serif'.}
+
+\item{tablefont_size}{Font size for the table text. Default is 20.}
+
+\item{theadbg_colour}{Colour code for the table header background. Default is
+'#c6c09c'.}
+
+\item{theadtext_colour}{Colour code for the table header text. Default is '#fff'.}
+
+\item{text_align}{Text alignment for the table text. Default is 'left'.}
+
+\item{hoverbg_colour}{Colour code for the hover over colour emphasis for rows.
+Default is '#f4f3ed'.}
+
+\item{other_CSS}{Optional additional CSS arguments. Can be supplied as '<script>'
+references to CSS libraries or class styles for the following: 'table_class';
+'thead_class', or 'tbody_class'. Additional classes can be assigned by editing
+the output HTML file directly.}
+
+\item{search_bar}{If 'hidden', search_bar will be hidden from view. Otherwise, the
+search bar will be displayed at the top of the table and responds to 'keyup'
+changes in the input field to search for exact matches across all columns. Search
+can also be performed by appending '?s=' and the search terms to the URL of the
+final output HTML.}
 }
 \value{
 an HTML object containing the full HTML code for the webpage. The function
@@ -17,7 +65,7 @@ also saves the HTML file to the working directory.
 Function converts a dataframe into an HTML table embedded within a full
 HTML file. The output file contains a summary showing the total number of table rows.
 The HTML file also includes JavaScript functions to support URL suffix searching via
-appending '?s=\link{query}' to the final URL. A JavaScript function filters the table and
-displays matching rows (based on an exact match search across all columns), updating
-the disaplyed row totals in the summary line.
+appending '?s=' and the search terms to the final URL. A JavaScript function filters
+the table and displays matching rows (based on an exact match search across all
+columns), updating the disaplyed row totals in the summary line.
 }

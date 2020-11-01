@@ -8,4 +8,4 @@ The first function developed for this package is `dataframe2html()`, which takes
 
 [See the example full table here](https://eviemsm4.github.io/tabletemplate.html), and the filtered table using a search query [here](https://eviemsm4.github.io/tabletemplate.html?s=USA%2FCanada%20College%2FUniversity%20Professional%20Training).
 
-<img src="tblscrnsht.png" align="center" width="100%" height="100%" />
+<img src="/inst/extdata/tblscrnsht.png" align="center" width="100%" height="100%" />
