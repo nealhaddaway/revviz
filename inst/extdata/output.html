@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+ 	<meta name="viewport" content="width=device-width, initial-scale=2">
+ 	
+ 	<style type="text/css">
+ .titletext {
+ 	font-weight: 400;
+ 	font-family: sans-serif;
+ 	font-size: 20px;
+ }
+ 
+ table {
+ 	font-weight: 400;
+ 	line-height: 1.5;
+ 	color: #212529;
+ 	font-family: sans-serif;
+ 	margin: 0px;
+ 	padding: 0px;
+ 	box-sizing: border-box;
+ 	margin-bottom: 110px;
+ 	background-color: #fff;
+ 	padding-top: 5px;
+ 	font-size: 14px;
+ 	word-wrap: break-word;
+ }
+ 
+ th {
+ 	position:sticky;
+ 	padding:5px;
+ 	top:0px;
+ 	background:#c6c09c;
+ 	color:#fff;
+ 	width: 30px;
+ }
+ 
+ td {
+ 	text-align: left;
+ 	padding: 20px;
+ }
+ 
+ tr {
+ 	border-bottom: 1px solid #ddd;
+ }
+ 
+ tr.header, tr:hover {
+ 	background-color: #f4f3ed;
+ }
+ 
+ </style>
+ 	
+ </head>
+ <body onload="prefill(); myFunction(); UpdateCount()">
+ 	<p class="titletext">Showing <span id="rowscount" onload="myFunction()" style="color:#938D69"></span> of <span id="totcount"></span> selected studies: <span id="selection" onload="prefill()" style="color:#938D69"></span></p>
+ <input type="text" id="myInput1" onload="myFunction()" hidden>
+<table id="table_id" class="table_class">
+	<thead id="thead_id" class="thead_class">
+		<tr>
+			<th>outcome</th>
+			<th>inst</th>
+			<th>loc</th>
+			<th>n</th>
+		</tr>
+	</thead>
+	<tbody id="tbody_id" class="tbody_class">
+		<tr>
+			<td>Behaviour and Social Wellbeing</td>
+			<td>College/University</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>College/University</td>
+			<td>UK/Ireland</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Africa</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>8			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Australia/New Zealand</td>
+			<td>10			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>8			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>46			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>8			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>18			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Africa</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Asia</td>
+			<td>8			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>11			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>42			</td>
+		</tr>
+		<tr>			<td>Behaviour and Social Wellbeing</td>
+			<td>Special School</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>College/University</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>10			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>20			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Multiple</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Multiple</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Multiple</td>
+			<td>UK/Ireland</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>11			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>24			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Primary/Elementary</td>
+			<td>Africa</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Primary/Elementary</td>
+			<td>Asia</td>
+			<td>6			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>20			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>80			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Special School</td>
+			<td>UK/Ireland</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Literacy/English</td>
+			<td>Special School</td>
+			<td>USA/Canada</td>
+			<td>3			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>College/University</td>
+			<td>UK/Ireland</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>4			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>17			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>4			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Primary/Elementary</td>
+			<td>Asia</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>7			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>19			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Special School</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Numeracy/Maths</td>
+			<td>Special School</td>
+			<td>USA/Canada</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>4			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Middle/High School</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>14			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>4			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Other School Subjects</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>14			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>College/University</td>
+			<td>Africa</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>9			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Africa</td>
+			<td>9			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>10			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>Australia/New Zealand</td>
+			<td>17			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>19			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>41			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Multiple</td>
+			<td>Asia</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Multiple</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Multiple</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>6			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Asia</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Africa</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Asia</td>
+			<td>7			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>6			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>11			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>18			</td>
+		</tr>
+		<tr>			<td>Physical Health and Wellbeing</td>
+			<td>Special School</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>College/University</td>
+			<td>Asia</td>
+			<td>18			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>College/University</td>
+			<td>Australia/New Zealand</td>
+			<td>11			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>College/University</td>
+			<td>UK/Ireland</td>
+			<td>19			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>60			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Professional Training</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Middle/High School</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Middle/High School</td>
+			<td>UK/Ireland</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>11			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Multiple</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Africa</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>5			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Primary/Elementary</td>
+			<td>Africa</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>4			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>10			</td>
+		</tr>
+		<tr>			<td>Range of Academic Outcomes</td>
+			<td>Special School</td>
+			<td>USA/Canada</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>College/University</td>
+			<td>UK/Ireland</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>College/University</td>
+			<td>USA/Canada</td>
+			<td>6			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Middle/High School</td>
+			<td>USA/Canada</td>
+			<td>6			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Multiple</td>
+			<td>Asia</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Preschool/Kindergarten</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Preschool/Kindergarten</td>
+			<td>USA/Canada</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Primary/Elementary</td>
+			<td>Asia</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Primary/Elementary</td>
+			<td>Australia/New Zealand</td>
+			<td>1			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Primary/Elementary</td>
+			<td>UK/Ireland</td>
+			<td>2			</td>
+		</tr>
+		<tr>			<td>Study-Related Skills</td>
+			<td>Primary/Elementary</td>
+			<td>USA/Canada</td>
+			<td>8			</td>
+		</tr>
+	</tbody>
+</table>
+<script>
+// extracts text from trailing end of URL and enters it into the filter
+function prefill (){
+	var loc = location.href;
+	var locationField1 = document.getElementById("myInput1");
+	var printout = document.getElementById("selection");
+	const var1 = loc.split("?s=").pop();
+	var part1 = var1.substring(
+			var1.lastIndexOf("?s=") + 1, 
+			var1.lastIndexOf("")
+	);
+	part1 = part1.replace(/%20/g, " ");
+	part1 = part1.replace(/%2F/g, "/");
+	if (loc.includes("?s=")) {
+		locationField1.value = part1;
+		printout.innerHTML = part1;
+	} else {}
+}
+
+// filters rows according to input values
+function myFunction() {
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("myInput1");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("tbody_id");
+	tr = table.getElementsByTagName("tr");
+	
+	// embedded code to calculate number of total rows in the table
+	var totcounts = document.getElementById("totcount");
+	var output = tr.length;
+	totcounts.innerHTML = output;
+	
+	for (var i = 0; i < tr.length; i++) {
+		var tds = tr[i].getElementsByTagName("td");
+		var flag = false;
+		for(var j = 0; j < tds.length; j++){
+			var td = tds[j];
+			if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				flag = true;
+			} 
+		}
+		if(flag){
+				tr[i].style.display = "";
+		}
+		else {
+				tr[i].style.display = "none";
+		}
+	}
+}
+
+// creates a count of the number of rows shown in the filtered table
+function UpdateCount () {
+	var returnt = document.getElementById("rowscount");
+	var totalRows = $('#tbody_id tr:not([style*="display: none"])').length;
+returnt.innerHTML = totalRows;
+}
+</script>
+</body>
+</html>
+

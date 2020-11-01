@@ -1,0 +1,21 @@
+Package: revviz
+Title: Produce Interactive Linked Visualisations/Tables For Evidence Reviews
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Neal Robert",
+           family = "Haddaway",
+           role = c("aut", "cre"),
+           email = "nealhaddaway@gmail.com",
+           comment = c(ORCID = "0000-0003-3902-2234"))
+Description: A work in progress. This package will provide a suite of data 
+    and table visualisation and analysis tools to support communication of 
+    the process/methods and findings of evidence reviews (including 
+    systematic reviews, systematic maps, scopin reviews, evidence and gap 
+    maps, etc.).
+License: GPL-3
+Imports:
+    tidyr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
