@@ -1,5 +1,5 @@
 # revviz: Produce Interactive Linked Visualisations/Tables For Evidence Reviews
-<img src="tblscrnsht.png" align="right" width="20%" height="20%" />
+<img src="tblscrnsht.png" align="right" width="50%" height="50%" />
 
 A work in progress. This package will provide a suite of data and table visualisation and analysis tools to support communication of the process/methods and findings of evidence reviews (including systematic reviews, systematic maps, scoping reviews, evidence and gap maps, etc.).
 
