@@ -102,7 +102,7 @@ dataframe2html <- function(data,
                        other_CSS,
                        '</style>\n \t\n </head>\n <body onload="prefill(); myFunction(); UpdateCount()">\n \t<p class="titletext">Showing <span id="rowscount" onload="myFunction()" style="color:',
                        emphasisfont_colour,
-                       '"></span> of <span id="totcount"></span> selected studies: <span id="selection" onload="prefill()" style="color:',
+                       '"></span> (from a total of <span id="totcount"></span>) studies: <span id="selection" onload="prefill()" style="color:',
                        emphasisfont_colour,
                        '"></span></p>\n <input type="text" id="myInput1" onload="myFunction()"', 
                        if(search_bar == 'hidden'){
