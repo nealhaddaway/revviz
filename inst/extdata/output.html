@@ -65,9 +65,9 @@ body.tablesorter-disableSelection { -ms-user-select: none; -moz-user-select: -mo
  	
  </head>
  <body onload="prefill(); myFunction(); UpdateCount()">
- 	<p class="titletext">Showing <span id="rowscount" onload="myFunction()" style="color:#938D69"></span> of <span id="totcount"></span> selected studies: <span id="selection" onload="prefill()" style="color:#938D69"></span></p>
+ 	<p class="titletext">Showing <span id="rowscount" onload="myFunction()" style="color:#938D69"></span> (from a total of <span id="totcount"></span>) studies: <span id="selection" onload="prefill()" style="color:#938D69"></span></p>
  <input type="text" id="myInput1" onload="myFunction()" hidden>
-<table id="table_id" class="table_class">
+<button onclick="exportTableToCSV('table.csv')">Download as CSV</button><table id="table_id" class="table_class">
 	<thead id="thead_id" class="thead_class">
 		<tr>
 			<th title="id: some extra text">id</th>
@@ -29126,6 +29126,47 @@ function UpdateCount () {
 	var totalRows = $('#tbody_id tr:not([style*="display: none"])').length;
 returnt.innerHTML = totalRows;
 }
+function downloadCSV(csv, filename) {
+	var csvFile;
+	var downloadLink;
+
+	csvFile = new Blob([csv], {type: "text/csv"});
+
+	downloadLink = document.createElement("a");
+
+	downloadLink.download = filename;
+
+	downloadLink.href = window.URL.createObjectURL(csvFile);
+
+	downloadLink.style.display = "none";
+
+	document.body.appendChild(downloadLink);
+
+	downloadLink.click();
+}
+
+function exportTableToCSV(filename) {
+			var csv = [];
+			var rows = document.querySelectorAll("table tr");
+
+			for (var i = 0; i < rows.length; i++) {
+				if (rows[i].style.display === "none") continue;
+				
+				var row = [], cols = rows[i].querySelectorAll("td, th");
+
+				for (var j = 0; j < cols.length; j++) 
+					row.push("\""+cols[j].innerText+"\"");
+
+				csv.push(row.join(","));		
+			}
+
+			downloadCSV(csv.join("\n"), filename);
+}
+
+$("table").children().each(function() {
+		$(this).html($(this).html().replace(/"/g,"'"));
+});
+
 </script>
 </body>
 </html>
