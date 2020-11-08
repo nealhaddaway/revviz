@@ -50,7 +50,7 @@
 #'     tooltips <- c("id: some extra text", "loc: some extra text", "inst: some extra text", 
 #'         "outcome: some extra text", "abs: some extra text", "title: some extra text", 
 #'         "url: some extra text", "year: some extra text", "appr: some extra text", 
-#'         "delv: some extra text", "dur: some extra text", "oucome2: some extra text", 
+#'         "delv: some extra text", "dur: some extra text", "outcome2: some extra text", 
 #'         "outcome3: some extra text", "trial: some extra text", "size: some extra text", 
 #'         "cluster: some extra text", "effect: some extra text", "analysis: some extra text", 
 #'         "long: some extra text", "genr: some extra text", "qual: some extra text", 
